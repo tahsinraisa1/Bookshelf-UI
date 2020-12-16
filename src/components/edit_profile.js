@@ -31,10 +31,7 @@ class EditProfile extends Component {
         const { id } = this.props.match.params;
         //console.log(values);
         this.props.editProfile(id, values, (success) => {
-            if(!success) {
                 this.props.history.push(`/users/me`);
-            }    
-            
         });
     }
 

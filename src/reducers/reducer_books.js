@@ -6,9 +6,6 @@ export default function(state = {}, action) {
         case FETCH_BOOK_DETAILS:
            // console.log(action.payload.data);
             return { ...state, [action.payload.data._id] : action.payload.data };
-        case EDIT_BOOK:
-            console.log(action.payload.data);
-            //state[action.payload.data._id]
         case FETCH_BOOKS:
             return _.mapKeys(action.payload.data, '_id');
         case DELETE_BOOK:

@@ -38,7 +38,7 @@ class EditBook extends Component {
                 this.props.history.push(`/login`);
             }    
             else {
-                this.props.history.push(`/`);
+                this.props.history.push(`/books/${id}`);
             }
         });
     }
@@ -98,6 +98,7 @@ function validate(values) {
     return errors;
 }
 function mapStateToProps(state, ownProps) {
+   // console.log(state.books[ownProps.match.params.id].author);
     return { book: state.books[ownProps.match.params.id] };
 }
 

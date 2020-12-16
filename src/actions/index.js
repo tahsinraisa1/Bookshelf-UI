@@ -86,8 +86,11 @@ export function editBook(id, values, callback) {
         headers: {
           'Authorization': `Bearer ${keys.token}` 
         }
-    }).then(() => callback(true)).catch(() => callback(false));
-   // console.log(request);
+    }).then((res) => {
+        console.log(res);
+        callback(true);
+    }).catch(() => callback(false));
+   
     return {
         type: EDIT_BOOK,
         payload: request
@@ -99,8 +102,11 @@ export function editProfile(id, values, callback) {
         headers: {
           'Authorization': `Bearer ${keys.token}` 
         }
-    }).then(() => callback(true)).catch(() => callback(false));
-   // console.log(request);
+    }).then((res) => {
+        console.log(res);
+        callback(true);
+    }).catch(() => callback(false));
+
     return {
         type: EDIT_PROFILE,
         payload: request
@@ -126,9 +132,4 @@ export function deleteProfile(callback) {
           'Authorization': `Bearer ${keys.token}` 
         }
     }).then(() => callback(true)).catch(() => callback(false));
-   // console.log(keys.token);
-    // return {
-    //     type: DELETE_PROFILE,
-    //     payload: request
-    // }
 }
