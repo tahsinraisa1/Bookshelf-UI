@@ -1,0 +1,38 @@
+h1 {
+    margin-bottom: 20px;
+}
+
+.upper-h {
+    margin-top: -40px;
+}
+.btn-primary,
+form a {
+    margin-top: 50px;
+}
+.btn-primary {
+    margin-right: 20px;
+    background-color: #3fc399;
+}
+.detail {
+    margin-top: 0;
+}
+.details-box {
+    border-radius: 1%;
+    border: 1px solid grey;
+    width: max-content;
+    padding: 30px;
+}
+.description {
+    width: 70vw;
+    margin: 15px 0;
+}
+.back-to-list {
+    display: block;
+    margin-top: 15px;
+    font-size: 120%;
+}
+.list-group-item,
+.list-group-item:last-child {
+    margin-bottom: 15px;
+    border: 2px solid #13331938;
+}
