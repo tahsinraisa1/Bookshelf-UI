@@ -119,16 +119,16 @@ export function deleteBook(id, callback) {
         payload: id
     }
 }
-export function deleteProfile(id, callback) {
-    const request = axios.delete(`${ROOT_URL}/users/${id}`,
+export function deleteProfile(callback) {
+    const request = axios.delete(`${ROOT_URL}/users/me`,
     {
         headers: {
           'Authorization': `Bearer ${keys.token}` 
         }
     }).then(() => callback(true)).catch(() => callback(false));
    // console.log(keys.token);
-    return {
-        type: DELETE_PROFILE,
-        payload: id
-    }
+    // return {
+    //     type: DELETE_PROFILE,
+    //     payload: request
+    // }
 }

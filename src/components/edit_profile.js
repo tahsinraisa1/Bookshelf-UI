@@ -8,7 +8,7 @@ import { fetchProfile, editProfile } from '../actions';
 class EditProfile extends Component {
     componentDidMount() {
         const { id } = this.props.match.params;
-        this.props.fetchBookDetails(id);
+        this.props.fetchProfile();
     }
     renderField(field) {
         const { meta } = field;
@@ -30,50 +30,45 @@ class EditProfile extends Component {
     onSubmit(values) {
         const { id } = this.props.match.params;
         //console.log(values);
-        this.props.editBook(id, values, (success) => {
+        this.props.editProfile(id, values, (success) => {
             if(!success) {
-                window.alert('Please login to add or edit books!');
+                this.props.history.push(`/users/me`);
             }    
-            this.props.history.push(`/`);
+            
         });
     }
 
     render() {
-        const { handleSubmit, book } = this.props;
-        if(!book) {
+        const { handleSubmit, user } = this.props;
+        if(!user) {
             return <div>Loading...</div>
         }
         return (
             <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
                 <Field
-                    label="Edit Book Title"
-                    name="title"
-                    placeholder={book.title}
+                    label="Edit Fullname"
+                    name="name"
+                    placeholder={user.name}
                     component={this.renderField}
                 />
                 <Field
-                    label="Edit Author"
-                    name="author" 
-                    placeholder={book.author}
+                    label="Edit Email"
+                    type="email"
+                    name="email"
+                    placeholder={user.email}
                     component={this.renderField}
                 />
                 <Field
-                    label="Edit ISBN"
-                    name="isbn" 
-                    placeholder={book.isbn}
-                    component={this.renderField}
-                />
-                <Field
-                    label="Edit Description"
-                    name="description" 
-                    placeholder={book.description}
+                    label="Edit Password"
+                    type="password"
+                    name="password"
                     component={this.renderField}
                 />
                 <Field
                     type="number"
-                    label="Edit Publication Year"
-                    name="published" 
-                    placeholder={book.published}
+                    label="Edit Age"
+                    name="age" 
+                    placeholder={user.age}
                     component={this.renderField}
                 />
                 <button type="submit" className="btn btn-primary">Save</button>
@@ -84,16 +79,13 @@ class EditProfile extends Component {
 }
 function validate(values) {
     const errors = {};
-    if(!(values.published>1000 && values.published<=2020)) {
-        errors.published = "Please enter a valid year!";
-    }
-    if(!isIsbn.validate(values.isbn)) {
-        errors.isbn = "Please enter valid isbn!"
+    if(values.password && values.password.length <8) {
+        errors.password = "Minimum 8 characters!";
     }
     return errors;
 }
-function mapStateToProps(state, ownProps) {
-    return { book: state.books[ownProps.match.params.id] };
+function mapStateToProps(state) {
+    return { user: state.users };
 }
 
 export default reduxForm({

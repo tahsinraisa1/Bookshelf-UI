@@ -2,17 +2,20 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchProfile, deleteProfile } from '../actions';
+import {keys} from '../actions';
 
 class ShowProfile extends Component {
     componentDidMount() {
-        const { id } = this.props.match.params;
         this.props.fetchProfile();
     }
     onDeleteClick() {
-        const { id } = this.props.match.params;
-        this.props.deleteProfile(id, (success) => {
+        this.props.deleteProfile((success) => {
             this.props.history.push('/');
         });
+    }
+    onLogoutClick() {
+        keys.token = undefined;
+        this.props.history.push('/');
     }
     render() {
         const { user } = this.props;
@@ -31,7 +34,7 @@ class ShowProfile extends Component {
                     
                     <h4>Name: {user.name}</h4>
                     <h5>Age: {user.age}</h5>
-                    <Link className="btn btn-primary detail" to={`/users/${user._id}/edit`}>Edit Profile</Link>
+                    <Link className="btn btn-primary detail" to="/users/me/edit">Edit Profile</Link>
                     <button
                         className="btn btn-danger"
                         onClick={this.onDeleteClick.bind(this)}
@@ -42,6 +45,9 @@ class ShowProfile extends Component {
                     <Link className="back-to-list" to="/">Back to list</Link>
                     
                 </div>
+                <button className="btn btn-danger logout-btn" onClick={this.onLogoutClick.bind(this)}>
+                    Logout
+                </button>
             </div>
         );
     }

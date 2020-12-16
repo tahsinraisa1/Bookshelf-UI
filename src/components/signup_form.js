@@ -37,7 +37,7 @@ class SignupForm extends Component {
             <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
                 <Field
                     label="Enter Fullname"
-                    name="fullname"
+                    name="name"
                     component={this.renderField}
                 />
                 <Field
@@ -79,6 +79,9 @@ function validate(values) {
     }
     if(!values.age) {
         errors.age = "Enter correct age!";
+    }
+    if(values.password && values.password.length <8) {
+        errors.password = "Minimum 8 characters!";
     }
 
     return errors;

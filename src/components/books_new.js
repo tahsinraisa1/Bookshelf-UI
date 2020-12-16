@@ -28,8 +28,10 @@ class NewBook extends Component {
         this.props.createBook(values, (success) => {
             if(!success) {
                 window.alert('Please login to add or edit books!');
-            }
-            this.props.history.push('/');
+                this.props.history.push('/login');
+            } else {
+                this.props.history.push('/');
+            }  
         });
     }
 

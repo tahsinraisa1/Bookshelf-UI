@@ -12,6 +12,7 @@ import LoginForm from './components/login_form';
 import SignupForm from './components/signup_form';
 import BookDetails from './components/book_detail';
 import EditBook from './components/edit_book';
+import EditProfile from './components/edit_profile';
 import ShowProfile from './components/profile_show';
 
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
@@ -26,6 +27,7 @@ ReactDOM.render(
           <Route path="/login" component={LoginForm}></Route>
           <Route path="/books/new" component={NewBook}></Route>
           <Route path="/books/:id" component={BookDetails}></Route>
+          <Route path="/users/me/edit" component={EditProfile}></Route>
           <Route path="/users/me" component={ShowProfile}></Route>
           <Route path="/" component={Booklist}></Route>
           

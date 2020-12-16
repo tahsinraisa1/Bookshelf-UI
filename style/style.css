@@ -31,6 +31,9 @@ form a {
     margin-top: 15px;
     font-size: 120%;
 }
+.logout-btn {
+    margin: 15px 0;
+}
 .list-group-item,
 .list-group-item:last-child {
     margin-bottom: 15px;

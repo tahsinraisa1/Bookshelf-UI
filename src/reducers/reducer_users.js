@@ -8,8 +8,6 @@ export default function(state = {}, action) {
             return action.payload.data;
         case EDIT_PROFILE:
             console.log(action.payload.data);
-        case DELETE_PROFILE:
-            return _.omit(state, action.payload);
         default:
             return state;
     }
